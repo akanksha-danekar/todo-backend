@@ -1,0 +1,33 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "Backend for Todo App using Node.js, Express, and MongoDB",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akanksha-danekar/todo-backend.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "todo-app",
+    "backend"
+  ],
+  "author": "Akanksha Danekar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akanksha-danekar/todo-backend/issues"
+  },
+  "homepage": "https://github.com/akanksha-danekar/todo-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.3.4"
+  }
+}
