@@ -7,19 +7,23 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+
+// Use the PORT from environment (Render provides it) or default to 3000
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());           // Enable CORS for frontend
 app.use(express.json());   // Parse JSON requests
 
+// Welcome route for base URL
+app.get("/", (req, res) => {
+  res.send("✅ Todo Backend API is running!");
+});
+
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("✅ MongoDB connected"))
-.catch((err) => console.error("❌ MongoDB connection error:", err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Todo Schema
 const todoSchema = new mongoose.Schema({
@@ -34,7 +38,6 @@ const Todo = mongoose.model("Todo", todoSchema);
 // Get all todos
 app.get("/todos", async (req, res) => {
   try {
-    
     const todos = await Todo.find();
     res.json(todos);
   } catch (err) {
